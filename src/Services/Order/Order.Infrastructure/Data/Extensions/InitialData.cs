@@ -10,5 +10,7 @@ namespace Order.Infrastructure.Data.Extensions
             Customer.Create(CustomerId.Of(Guid.NewGuid()),"Customer2","customer2@example.com"),
             Customer.Create(CustomerId.Of(Guid.NewGuid()),"Customer2","customer2@example.com")
         };
+
+        public static IEnumerable<Product> Products { get; set; }
     }
 }
