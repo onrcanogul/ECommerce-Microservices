@@ -22,7 +22,7 @@ namespace Order.Domain.Models
         }
 
 
-        public static Order Create(OrderId id, CustomerId customerId, OrderName ordername, Address shippingAdress, Address billingAddress, Payment payment, OrderStatus orderStatus)
+        public static Order Create(OrderId id, CustomerId customerId, OrderName ordername, Address shippingAddress, Address billingAddress, Payment payment)
         {
             Order order = new()
             {
@@ -31,8 +31,8 @@ namespace Order.Domain.Models
                 OrderName = ordername,
                 Payment = payment,
                 BillingAddress = billingAddress,
-                ShippingAddress = shippingAdress,
-                Status = orderStatus
+                ShippingAddress = shippingAddress,
+                Status = OrderStatus.Pending
             };
 
             order.AddDomainEvent(new OrderCreatedEvent(order));
