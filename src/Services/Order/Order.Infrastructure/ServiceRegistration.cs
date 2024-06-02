@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Order.Application.Data;
 namespace Order.Infrastructure
 {
     public static class ServiceRegistration
@@ -15,6 +16,10 @@ namespace Order.Infrastructure
                 options.AddInterceptors(sp.GetServices<ISaveChangesInterceptor>());
                 options.UseSqlServer(configuration.GetConnectionString("Database"));
             });
+
+
+            services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
+
             return services;
         }
     }

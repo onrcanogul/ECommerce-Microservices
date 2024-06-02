@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Shared.Behaviors;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +13,13 @@ namespace Order.Application
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
-            services.AddMediatR(cfg =>
+            services.AddMediatR(config =>
             {
-                cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly());
+                
+                config.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly());
+                config.AddOpenBehavior(typeof(ValidationBehavior<,>));
+                config.AddOpenBehavior(typeof(LoggingBehaviour<,>));
+                // for generics AddOpenBehaviour else AddBehaviour
             });
 
             return services;
