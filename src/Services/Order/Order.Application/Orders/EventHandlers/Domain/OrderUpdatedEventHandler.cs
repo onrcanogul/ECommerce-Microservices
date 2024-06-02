@@ -12,7 +12,7 @@ namespace Order.Application.Orders.EventHandlers.Domain
         public Task Handle(OrderUpdatedEvent notification, CancellationToken cancellationToken)
         {
             logger.LogInformation("Domain Event handled: {DomainEvent}", notification.GetType().Name);
-            throw new NotImplementedException();
+            return Task.CompletedTask;
         }
     }
 }

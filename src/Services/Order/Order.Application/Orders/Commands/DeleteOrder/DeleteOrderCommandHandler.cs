@@ -20,7 +20,8 @@ namespace Order.Application.Orders.Commands.DeleteOrder
             }
 
             dbContext.Orders.Remove(order);
-            throw new NotImplementedException();
+            await dbContext.SaveChangesAsync(cancellationToken);
+            return new(true);
         }
     }
 }

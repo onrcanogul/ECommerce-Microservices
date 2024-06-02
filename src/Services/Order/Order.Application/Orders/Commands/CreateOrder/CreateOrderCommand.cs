@@ -7,7 +7,7 @@ namespace Order.Application.Orders.Commands.CreateOrder
 {
     public record CreateOrderCommandRequest(OrderDto Order) : ICommand<CreateOrderCommandResponse>;
 
-    public record CreateOrderCommandResponse(Guid id); 
+    public record CreateOrderCommandResponse(Guid Id); 
 
 
     public class CreateOrderCommandValidator : AbstractValidator<CreateOrderCommandRequest>
